@@ -9,9 +9,7 @@
     <link type= "text/css" rel="stylesheet" href="css/base.css">
 </head>
 <body>
-    <header>
-        <h1>PHP Class - Erich's Website</h1>
-    </header>
+    <header><?php include 'includes/header.php' ?></header>
     <nav>
         <ul>
             <li><a href="/">Homepage</a></li>
