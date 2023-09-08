@@ -1,1 +1,1 @@
-<h1>PHP Class - Erich's Cool Website</h1>
+<h1>PHP Class - Erich's Coolest Website</h1>
