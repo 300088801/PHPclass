@@ -3,7 +3,7 @@
 header{
     width: 100%;
     float: left;
-    font-family: Georgia;
+    font-family: Georgia, serif;
     text-align: center;
 }
 
@@ -18,7 +18,7 @@ main{
     width: 60%;
     float: left;
     font-size: large;
-
+    text-align: center;
 }
 
 main img{
