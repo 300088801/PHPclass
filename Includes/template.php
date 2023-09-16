@@ -9,7 +9,7 @@
     <link type= "text/css" rel="stylesheet" href="../css/base.css">
 </head>
 <body>
-<header><?php include '../Includes/header.php'?></header>
+<header><?php include '../Includes/Header.php'?></header>
 <nav> <?php include '../Includes/nav.php'?></nav>
 <main>
 
