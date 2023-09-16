@@ -20,10 +20,10 @@ $seconds = $endOfSchool - $now;
 $years = floor($seconds/$secPerYear);
 $seconds = $seconds - ($years * $seconds);
 
-$days = floor($seconds / $secPerDay);
+$days = floor($seconds / $secPerDay); //86400
 $seconds = $seconds -($days * $secPerDay);
 
-$hours = floor($seconds / $secPerHour);
+$hours = floor($seconds / $secPerHour); //3600 seconds in an hour
 $seconds = $seconds -($hours * $secPerHour);
 
 $minutes= floor($seconds / $secPerMinute);
