@@ -14,10 +14,11 @@ session_start(); // variable that will exist for the duration of the session
     $name = array("Bob"=>"Jones", "Steve"=> "
     Daily"); //Associative Array -- this will print out Jones
     echo $name{"Bob"};*/
-    if(isset($_POST{"txtQuestion"})) //checks to see if they asked a question. If they did, question variable will hold the question
+    if(isset($_POST{"txtQuestion"})) //checks to see if they asked a question. If they did, $question variable will hold the question. This is actually an associative array that is looking for the value of our text input (this case it would be "txtQuestion)
         {$question = $_POST{"txtQuestion"};}
     else
     {$question="";}
+
 
     if(isset($_SESSION{"PrevQuest"}))
     {
@@ -35,7 +36,7 @@ session_start(); // variable that will exist for the duration of the session
     $responses{3}= "It appears to be so";
     $responses{4}= "Reply is hazy, please try again";
     $responses{5}= "Yes, definitely";
-    $responses{6}= "What is you rewally want to know";
+    $responses{6}= "What is you really want to know";
     $responses{7}= "Outlook is good";
     $responses{8}= "My sources say no";
     $responses{9}= "Signs point to yes";
@@ -86,7 +87,7 @@ session_start(); // variable that will exist for the duration of the session
     <br>
     <marquee><?=$answer?></marquee>
     <p>Please ask a question:<br>
-    <form method="post" action="magic8.php">
+    <form method="post" action="magic8.php"> // post sends it up to the server
         <input type="text" name="txtQuestion" id="txtQuestion" value="<?=$question?>"></p>
         <input type="submit" value="Ask the  magic 8 Ball">
     </form>
