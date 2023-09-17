@@ -87,7 +87,7 @@ session_start(); // variable that will exist for the duration of the session
     <br>
     <marquee><?=$answer?></marquee>
     <p>Please ask a question:<br>
-    <form method="post" action="magic8.php"> // post sends it up to the server
+    <form method="post" action="magic8.php">  <!--post sends it up to the server-->
         <input type="text" name="txtQuestion" id="txtQuestion" value="<?=$question?>"></p>
         <input type="submit" value="Ask the  magic 8 Ball">
     </form>
