@@ -16,8 +16,15 @@
 <nav> <?php include '../Includes/nav.php'?></nav>
 <main>
     <h3>My Movie List</h3>
+
+    <table border="1" width="80%" >
+        <tr>
+            <th>Key</th>
+            <th>Movie Title</th>
+            <th>Rating</th>
+        </tr>
     <?php
-    include '../includes/dbConn.php';
+    include '../Includes/dbConn.php';
 
 
     try{
@@ -27,7 +34,20 @@
         $sql->execute();
         $row = $sql->fetch();
 
-        echo $row["movieTitle"];
+
+        while($row != null)
+        {
+            echo"<tr>";
+            echo"<td>" . $row["movieID"] . "</td>";
+            echo"<td>" . $row["movieTitle"] . "</td>";
+            echo"<td>" . $row["movieRating"] . "</td>";
+            echo"</tr>";
+
+
+
+            $row = $sql->fetch();
+        }
+
     }catch(PDOException $e){
         $error = $e->getMessage();
         echo "Error: $error";
@@ -36,6 +56,9 @@
 
 
     ?>
+    </table>
+    <br /><br /><br />
+    <a href="movieadd.php">Add New Movie</a>
 
 </main>
 <footer><?php include '../Includes/footer.php'?></footer>

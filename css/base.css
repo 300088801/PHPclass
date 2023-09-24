@@ -1,5 +1,7 @@
 /*Website style */
-
+table {
+    margin: auto;
+}
 header{
     width: 100%;
     float: left;

@@ -1,6 +1,6 @@
 <?php
 // Make Database connection
-$dsn ='mysql:host=10.6.112.193; dbname=phpclass';
+$dsn ='mysql:host=localhost; dbname=phpclass';
 $username = 'dbuser';
 $password = 'dbdev123';
 $options = array(
