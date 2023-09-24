@@ -1,3 +1,33 @@
+<?php
+if(isset($_POST["txtTitle"]))
+{
+    if(isset($_POST["txtRating"]))
+    {
+        $title = $_POST["txtTitle"];
+        $rating= $_POST["txtRating"];
+
+
+        //Database stuff
+        include '../Includes/dbConn.php';
+        try{
+            $db = new PDO($dsn, $username, $password, $options);
+
+            $sql = $db->prepare("insert into movielist (movieTitle,movieRating) Value (:Title, :Rating)");
+            $sql->bindValue(":Title", $title);
+            $sql->bindValue(":Rating",$rating);
+            $sql->execute();
+
+        }catch(PDOException $e){
+            $error = $e->getMessage();
+            echo "Error: $error";
+        }
+
+        header("Location:movielist.php");
+    }
+
+}
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -12,24 +42,26 @@
 <header><?php include '../Includes/Header.php'?></header>
 <nav> <?php include '../Includes/nav.php'?></nav>
 <main>
-    <table border="1" width="100%">
-        <tr>
-            <th colspan="2"> Add New Movie</th>
-        </tr>
-        <tr>
-            <th>Movie Name</th>
-            <td><input type="text"> </td>
-        </tr>
-        <tr>
-            <th>Movie Rating</th>
-            <td><input type="text"> </td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <input type="submit" value="Add New Movie">
-            </td>
-        </tr>
-    </table>
+    <form method="post" >
+        <table border="1" width="80%">
+            <tr height="60">
+                <th colspan="2"><h3>Add New Movie</h3></th>
+            </tr>
+            <tr height="60">
+                <th>Movie Name</th>
+                <td><input id="txtTitle" name="txtTitle" type="text" size="50" </td>
+            </tr>
+            <tr height="60">
+                <th>Movie Rating</th>
+                <td><input id="txtRating" name="txtRating" type="text" size="50"> </td>
+            </tr>
+            <tr height="60">
+                <td colspan="2">
+                    <input type="submit" value="Add New Movie">
+                </td>
+            </tr>
+        </table>
+    </form>
 </main>
 <footer><?php include '../Includes/footer.php'?></footer>
 </body>
