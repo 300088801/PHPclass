@@ -5,4 +5,5 @@
     <li> <a href="/magic8/magic8.php">Magic 8 Ball</a> </li>
     <li> <a href="/dicegame/dicegame.php">Dice Game</a> </li>
     <li> <a href="/movielist/movielist.php">My Movie List</a> </li>
+    <li> <a href="/customers/customers.php">Customer Home Page</a> </li>
 </ul>
