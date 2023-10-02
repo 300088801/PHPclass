@@ -28,8 +28,8 @@
             <th>Password</th>
         </tr>
         <?php
-        include '../Includes/dbConn.php';
-
+        //include '../Includes/dbConn.php';
+        require_once('../Includes/dbConn.php');
 
         try{
             $db = new PDO($dsn, $username, $password, $options);

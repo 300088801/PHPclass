@@ -1,7 +1,6 @@
 <?php
     if(isset($_POST["txtFirstName"], $_POST["txtLastName"], $_POST["txtAddress"], $_POST["txtCity"], $_POST["txtState"], $_POST["txtZip"], $_POST["txtPhone"], $_POST["txtEmail"], $_POST["txtPassword"]))
     {
-        $id = $_POST["txtID"];
         $firstName= $_POST["txtFirstName"];
         $lastName= $_POST["txtLastName"];
         $address= $_POST["txtAddress"];
@@ -10,15 +9,16 @@
         $zip= $_POST["txtZip"];
         $phone= $_POST["txtPhone"];
         $email= $_POST["txtEmail"];
-        $password= $_POST["txtPassword"];
+        $customerPassword= $_POST["txtPassword"];
 
 
         //Database stuff
-        include '../Includes/dbConn.php';
+        //include '../Includes/dbConn.php';
+        require_once('../Includes/dbConn.php');
         try{
             $db = new PDO($dsn, $username, $password, $options);
 
-            $sql = $db->prepare("insert into customers (firstName,lastName,Address,city,state,zip,phone,email,password) Value (:firstName, :lastName,address,city,state,zip,phone,email,password)");
+            $sql = $db->prepare("insert into customers (firstName,lastName,Address,city,state,zip,phone,email,password) Value (:firstName,:lastName,address,city,state,zip,phone,email,password)");
             $sql->bindValue(":firstName",$firstName);
             $sql->bindValue(":lastName",$lastName);
             $sql->bindValue(":address",$address);
