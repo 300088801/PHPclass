@@ -1,8 +1,3 @@
-<?php
-
-
-
-?>
 
 <!doctype html>
 <html lang="en">
@@ -74,7 +69,7 @@
         ?>
     </table>
     <br /><br /><br />
-    <a href="movieadd.php">Add New Movie</a>
+    <a href="customersadd.php">Add a Customer Here</a>
 </main>
 <footer><?php include '../Includes/footer.php'?></footer>
 </body>
