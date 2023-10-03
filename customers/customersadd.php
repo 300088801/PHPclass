@@ -18,7 +18,7 @@
         try{
             $db = new PDO($dsn, $username, $password, $options);
 
-            $sql = $db->prepare("insert into customers (firstName,lastName,Address,city,state,zip,phone,email,password) Value (:firstName,:lastName,address,city,state,zip,phone,email,password)");
+            $sql = $db->prepare("insert into customers (firstName,lastName,Address,city,state,zip,phone,email,password) Value (:firstName,:lastName,:address,:city,:state,:zip,:phone,:email,:password)");
             $sql->bindValue(":firstName",$firstName);
             $sql->bindValue(":lastName",$lastName);
             $sql->bindValue(":address",$address);
