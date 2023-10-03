@@ -27,7 +27,7 @@
             $sql->bindValue(":zip",$zip);
             $sql->bindValue(":phone",$phone);
             $sql->bindValue(":email",$email);
-            $sql->bindValue(":password",$password);
+            $sql->bindValue(":password",$customerPassword);
             $sql->execute();
 
         }catch(PDOException $e){
