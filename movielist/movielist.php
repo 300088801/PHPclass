@@ -26,24 +26,24 @@
 
 
     try{
-        $db = new PDO($dsn, $username, $password, $options);
+        $db = new PDO($dsn, $username, $password, $options); // trying to connect using PDO
 
-        $sql = $db->prepare("select * from movielist");
-        $sql->execute();
-        $row = $sql->fetch();
+        $sql = $db->prepare("select * from movielist"); //asking for all of the fields in our database movielist
+        $sql->execute(); //database gets records and retrieve it into our sql
+        $row = $sql->fetch(); // grabs the first row
 
 
-        while($row != null)
+        while($row != null) //our loop to continue grabbing records as long as our row isnt null
         {
             echo"<tr>";
-            echo"<td>" . $row["movieID"] . "</td>";
+            echo"<td>" . $row["movieID"] . "</td>";   // we throw our table data into the table on our website
             echo"<td>" . $row["movieTitle"] . "</td>";
             echo"<td>" . $row["movieRating"] . "</td>";
             echo"</tr>";
 
 
 
-            $row = $sql->fetch();
+            $row = $sql->fetch(); //after echoing our data from the row, we try to grab the next row to continue our loop
         }
 
     }catch(PDOException $e){
