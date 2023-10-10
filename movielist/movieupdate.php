@@ -1,5 +1,4 @@
 <?php
-
 //Database stuff
 include '../Includes/dbConn.php';
 
@@ -83,7 +82,7 @@ else {
             </tr>
             <tr height="60">
                 <th>Movie Name</th>
-                <td><input id="txtTitle" name="txtTitle" type="text" size="50" value="<?= $title?>"></td>  //inline php to insert our values from above into the rows when the user clicks to update
+                <td><input id="txtTitle" name="txtTitle" type="text" size="50" value="<?= $title?>"></td>  <!--inline php to insert our values from above into the rows when the user clicks to update-->
             </tr>
             <tr height="60">
                 <th>Movie Rating</th>

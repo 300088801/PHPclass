@@ -12,7 +12,6 @@
         $customerPassword= $_POST["txtPassword"];
         $id = $_POST["txtID"];
 
-
         //Database stuff
         //include '../Includes/dbConn.php';
         require_once('../Includes/dbConn.php');
