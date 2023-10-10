@@ -19,7 +19,7 @@
         try{
             $db = new PDO($dsn, $username, $password, $options);
 
-            $sql = $db->prepare("update customers set firstName = :firstName, lastName = :lastName ,address = :address, city = :city, state = :state, zip = :zip, phone = :phone, email= :email,password = :password where customerID= ID");
+            $sql = $db->prepare("update customers set firstName = :firstName, lastName = :lastName ,address = :address, city = :city, state = :state, zip = :zip, phone = :phone, email= :email,password = :password where customerID= :ID");
             $sql->bindValue(":firstName",$firstName);
             $sql->bindValue(":lastName",$lastName);
             $sql->bindValue(":address",$address);
@@ -50,15 +50,15 @@ if(isset($_GET["id"])){
         $sql->execute();
         $row = $sql->fetch();
 
-        $firstName = $row["txtFirstName"];
-        $lastName = $row["txtLastName"];
-        $address = $row["txtAddress"];
-        $city = $row["txtCity"];
-        $state = $row["txtState"];
-        $zip = $row["txtZip"];
-        $phone = $row["txtPhone"];
-        $email = $row["txtEmail"];
-        $customerPassword = $row["txtCustomerPassword"];
+        $firstName = $row["firstName"];
+        $lastName = $row["lastName"];
+        $address = $row["address"];
+        $city = $row["city"];
+        $state = $row["state"];
+        $zip = $row["zip"];
+        $phone = $row["phone"];
+        $email = $row["email"];
+        $customerPassword = $row["password"];
 
     }catch(PDOException $e){
         $error = $e->getMessage();
@@ -97,7 +97,7 @@ else {
     <form method="post" >
         <table border="1" width="80%">
             <tr height="60">
-                <th colspan="2"><h3>Customer Database: Add a New Customer</h3></th>
+                <th colspan="2"><h3>Customer Database: Update Customer Information</h3></th>
             </tr>
             <tr height="60">
                 <th>First Name</th>
@@ -137,7 +137,7 @@ else {
             </tr>
             <tr height="60">
                 <td colspan="2">
-                    <input type="submit" value="Add Customer" value="Update Customer"> | <input type="button" onclick="DeleteCustomer('<?= $firstName?>', <?=$lastName ?> ,<?=$id?>)" value="Delete Customer">
+                    <input type="submit" value="Update Customer" value="Update Customer"> | <input type="button" onclick="DeleteCustomer('<?= $firstName?>', '<?=$lastName ?>', '<?=$id?>')" value="Delete Customer">
                 </td>
             </tr>
             <input type="hidden" id="txtID" name="txtID" value="<?= $id?>">
