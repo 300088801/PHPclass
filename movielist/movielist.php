@@ -37,7 +37,7 @@
         {
             echo"<tr>";
             echo"<td>" . $row["movieID"] . "</td>";   // we throw our table data into the table on our website
-            echo"<td>" . $row["movieTitle"] . "</td>";
+            echo"<td> <a href=movieupdate.php?id=" . $row["movieID"] . ">" . $row["movieTitle"] . "</a></td>"; //make the move name clickable for update page.
             echo"<td>" . $row["movieRating"] . "</td>";
             echo"</tr>";
 
