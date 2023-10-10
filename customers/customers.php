@@ -42,7 +42,7 @@
             while($row != null)
             {
                 echo"<tr>";
-                echo"<td>" . $row["customerID"] . "</td>";
+                echo"<td><a href=customersupdate.php?id=" . $row["customerID"] . ">" . $row["customerID"] . "</a></td>";
                 echo"<td>" . $row["firstName"] . "</td>";
                 echo"<td>" . $row["lastName"] . "</td>";
                 echo"<td>" . $row["address"] . "</td>";
