@@ -71,7 +71,7 @@
             </tr>
             <tr height="60">
                 <th>Address</th>
-                <td><input id="txtAddress" name="txtAddress" type="text" size="50"> </td>
+                <td><input id="txtAddress" name="txtAddress" type="text" size="50" value="<?= isset($_POST['txtAddress']) ? htmlspecialchars($_POST['txtAddress']) : '' ?>"> </td>
             </tr>
             <tr height="60">
                 <th>City</th>
