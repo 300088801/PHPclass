@@ -33,6 +33,8 @@ require_once('../Includes/dbConn.php');
             $sql->bindValue(":ID",$id);
             $sql->execute();
 
+            echo "Records update successfully";
+
         }catch(PDOException $e){
             $error = $e->getMessage();
             echo "Error 4: $error";
