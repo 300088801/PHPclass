@@ -13,7 +13,7 @@ if(isset($_GET["id"])){
 
     }catch(PDOException $e){
         $error = $e->getMessage();
-        echo "Error: $error";
+        echo "Error 2: $error";
     }
 }
 header("Location:customers.php");

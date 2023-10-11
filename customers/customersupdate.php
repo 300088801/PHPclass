@@ -18,7 +18,7 @@
         try{
             $db = new PDO($dsn, $username, $password, $options);
 
-            $sql = $db->prepare("update customers set firstName = :firstName, lastName = :lastName ,address = :address, city = :city, state = :state, zip = :zip, phone = :phone, email= :email,password = :password where customerID= :ID");
+            $sql = $db->prepare("update customers set firstName = :firstName, lastName = :lastName ,Address = :address, city = :city, state = :state, zip = :zip, phone = :phone, email= :email,password = :password where customerID= :ID");
             $sql->bindValue(":firstName",$firstName);
             $sql->bindValue(":lastName",$lastName);
             $sql->bindValue(":address",$address);
@@ -33,7 +33,7 @@
 
         }catch(PDOException $e){
             $error = $e->getMessage();
-            echo "Error: $error";
+            echo "Error 4: $error";
         }
 
         header("Location:customers.php");
@@ -51,7 +51,7 @@ if(isset($_GET["id"])){
 
         $firstName = $row["firstName"];
         $lastName = $row["lastName"];
-        $address = $row["address"];
+        $address = $row["Address"];
         $city = $row["city"];
         $state = $row["state"];
         $zip = $row["zip"];
@@ -61,7 +61,7 @@ if(isset($_GET["id"])){
 
     }catch(PDOException $e){
         $error = $e->getMessage();
-        echo "Error: $error";
+        echo "Error 3: $error";
     }
 }
 else {

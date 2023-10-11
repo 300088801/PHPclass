@@ -32,7 +32,7 @@
 
         }catch(PDOException $e){
             $error = $e->getMessage();
-            echo "Error: $error";
+            echo "Error 1: $error";
         }
 
         header("Location:customers.php");
