@@ -1,4 +1,9 @@
 <?php
+
+//Database stuff
+//include '../Includes/dbConn.php';
+require_once('../Includes/dbConn.php');
+
     if(isset($_POST["txtFirstName"], $_POST["txtLastName"], $_POST["txtAddress"], $_POST["txtCity"], $_POST["txtState"], $_POST["txtZip"], $_POST["txtPhone"], $_POST["txtEmail"], $_POST["txtPassword"]))
     {
         $firstName= $_POST["txtFirstName"];
@@ -12,9 +17,6 @@
         $customerPassword= $_POST["txtPassword"];
         $id = $_POST["txtID"];
 
-        //Database stuff
-        //include '../Includes/dbConn.php';
-        require_once('../Includes/dbConn.php');
         try{
             $db = new PDO($dsn, $username, $password, $options);
 
@@ -51,7 +53,7 @@ if(isset($_GET["id"])){
 
         $firstName = $row["firstName"];
         $lastName = $row["lastName"];
-        $address = $row["Address"];
+        $address = $row["address"];
         $city = $row["city"];
         $state = $row["state"];
         $zip = $row["zip"];
