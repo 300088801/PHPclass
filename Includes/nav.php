@@ -6,4 +6,5 @@
     <li> <a href="/dicegame/dicegame.php">Dice Game</a> </li>
     <li> <a href="/movielist/movielist.php">My Movie List</a> </li>
     <li> <a href="/customers/customers.php">Customer Home Page</a> </li>
+    <li> <a href="/login/">Login</a></li>
 </ul>
