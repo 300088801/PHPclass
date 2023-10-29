@@ -1,3 +1,13 @@
+<?php
+session_start();
+if(!isset($_SESSION{"UID"}))
+{
+    header("Location:index.php"); // if session isn't true, user is sent back to main page
+}
+
+
+?>
+
 <!doctype html>
 <html lang="en">
 <head>

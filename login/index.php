@@ -9,8 +9,8 @@ if(isset($_POST["txtUsername"])) {
 
         if (strtolower($userName)== "admin" && $loginPassword == "p@ss")
         {
+            $_SESSION{"UID"}=1; //start session before heading over to admin page
             header("Location:admin.php"); //take them to the admin page if they have the right credentials
-            $_SESSION{"UID"}=1;
         }
         else
         {
