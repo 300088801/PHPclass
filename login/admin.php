@@ -1,10 +1,23 @@
 <?php
 session_start();
-if(!isset($_SESSION{"UID"}))
+$errmsg="";
+if(!isset($_SESSION["UID"]))
 {
     header("Location:index.php"); // if session isn't true, user is sent back to main page
 }
 
+if(isset($_POST["submit"]))
+{
+    if(empty($_POST["txtFName"]))
+    {
+        $errmsg = "Name is required";
+    }
+    else{
+        $FName=$_POST["txtFName"];
+    }
+    echo "We are here";
+
+}
 
 ?>
 
@@ -23,14 +36,15 @@ if(!isset($_SESSION{"UID"}))
 <nav> <?php include '../Includes/nav.php'?></nav>
 <main>
     <h1>Admin Page</h1>
-    <form method="get" >
+    <h3 id="error"><?=$errmsg?></h3>
+    <form method="post" >
         <table border="1" width="80%">
             <tr height="60">
                 <th colspan="2"><h3>Add New Member</h3></th>
             </tr>
             <tr height="60">
                 <th>Full Name</th>
-                <td><input id="txtFName" name="txtFName" type="text" size="50"></td>  <!--inline php to insert our values from above into the rows when the user clicks to update-->
+                <td><input id="txtFName" name="txtFName" type="text" size="50" required</td>  <!--inline php to insert our values from above into the rows when the user clicks to update-->
             </tr>
             <tr height="60">
                 <th>Email</th>
@@ -48,15 +62,15 @@ if(!isset($_SESSION{"UID"}))
                 <th>Role</th>
                 <td>
                     <select id="txtRole" name="txtRole">
-                        <option value="Admin">Admin</option>
-                        <option value="Operator">Operator</option>
-                        <option value="Member">Members</option>
+                        <option value="1">Admin</option>
+                        <option value="2">Operator</option>
+                        <option value="3">Members</option> // these are our values in the database
                     </select>
                 </td>
             </tr>
             <tr height="60">
                 <td colspan="2">
-                    <input type="submit" value="Add New Member">
+                    <input type="submit" value="Add New Member" name="submit">
                 </td>
             </tr>
         </table>
