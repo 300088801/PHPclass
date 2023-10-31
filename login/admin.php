@@ -1,7 +1,11 @@
 <?php
 session_start();
 $errmsg="";
-if(!isset($_SESSION["UID"]))
+
+//generate guid
+$key= sprintf('%04X%04X%04X%04X%04X%04X%04X%04X', mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(16384, 20479), mt_rand(32768, 49151), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535));
+
+if($_SESSION {"Role"}!=1)
 {
     header("Location:index.php"); // if session isn't true, user is sent back to main page
 }
@@ -56,9 +60,9 @@ if(isset($_POST["submit"]))
 
             $sql->bindValue(":Name", $FName);
             $sql->bindValue(":Email",$Email);
-            $sql->bindValue(":Password",$LoginPassword);
-            $sql->bindValue(":RID",$Role);
-            $sql->bindValue(":Key","XXXXXXXXXXXX");
+            $sql->bindValue(":Password",md5($LoginPassword . $key)); //md5 mixes our password up in a hash, can be reverse engineered though
+            $sql->bindValue(":RID",$Role);                                 // adding in our key is called salting. It adds an extra layer of randomness
+            $sql->bindValue(":Key",$key);
             $sql->execute();
 
         }catch(PDOException $e){

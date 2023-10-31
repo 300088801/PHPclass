@@ -1,27 +1,57 @@
 <?php
 session_start(); //open up a session-this session allows a person not to go right to the admin page
 
-if(isset($_POST["txtUsername"])) {
+if(isset($_POST["txtEmail"])) {
     if (isset($_POST["txtLoginPassword"])) {
-        $userName = $_POST["txtUsername"];
+        $email = $_POST["txtEmail"];
         $loginPassword = $_POST["txtLoginPassword"];
         $errmsg="";
 
-        if (strtolower($userName)== "admin" && $loginPassword == "p@ss")
-        {
-            $_SESSION{"UID"}=1; //start session before heading over to admin page
-            header("Location:admin.php"); //take them to the admin page if they have the right credentials
-        }
-        else
-        {
-            if (strtolower($userName)== "user" && $loginPassword == "p@ss")
+
+
+        include '../Includes/dbConn.php';
+
+
+        try{
+            $db = new PDO($dsn, $username, $password, $options); // trying to connect using PDO
+
+            $sql = $db->prepare("select memberID, memberPassword, memberKey,RoleID from memberLogin where memberEmail = :Email"); //asking for all of the fields in our database movielist
+            $sql->bindValue(":Email",$email ); // we enforce unique email policy in our memberLogin table
+            $sql->execute(); //database gets records and retrieve it into our sql
+            $row = $sql->fetch(); // grabs the first row
+
+            if($row != null)
             {
-                header("Location:member.php");
+                $hashedPassword=md5($loginPassword . $row["memberKey"]);
+                if($hashedPassword == $row["memberPassword"])
+                {
+                    $_SESSION{"UID"}=1;
+                    $_SESSION{"Role"} = $row["RoleID"];
+                    if($row["RoleID"]==1)
+                    {
+                        header("Location:admin.php");
+                    }
+                    else
+                    {
+                        header("Location:member.php");
+                    }
+                }
+                else
+                {
+                    $errmsg = "Wrong Password";
+                }
             }
             else
-            {$errmsg="Wrong Username or Password";}
-        }
+            {
+                $errmsg = "Wrong Username";
+            }
 
+
+
+        }catch(PDOException $e){
+            $error = $e->getMessage();
+            echo "Error: $error";
+        }
     }
 }
 ?>
@@ -46,8 +76,8 @@ if(isset($_POST["txtUsername"])) {
                 <th colspan="2"><h3>User Login</h3></th>
             </tr>
             <tr height="60">
-                <th>Username</th>
-                <td><input id="txtUsername" name="txtUsername" type="text" size="50"></td>  <!--inline php to insert our values from above into the rows when the user clicks to update-->
+                <th>Email</th>
+                <td><input id="txtEmail" name="txtEmail" type="text" size="50"></td>  <!--inline php to insert our values from above into the rows when the user clicks to update-->
             </tr>
             <tr height="60">
                 <th>Password</th>
