@@ -34,6 +34,14 @@ if(isset($_POST["txtEmail"])) {
                     else
                     {
                         header("Location:member.php");
+                        if($row[RoleID]==2)
+                        {
+                            //on the member.php page, show something for the role of operator
+                        }
+                        else
+                        {
+                            //on the member.php page, show something for the role of member
+                        }
                     }
                 }
                 else

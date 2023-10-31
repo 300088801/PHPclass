@@ -7,7 +7,7 @@ $key= sprintf('%04X%04X%04X%04X%04X%04X%04X%04X', mt_rand(0, 65535), mt_rand(0, 
 
 if($_SESSION {"Role"}!=1)
 {
-    header("Location:index.php"); // if session isn't true, user is sent back to main page
+    header("Location:index.php"); // if user isnt admin send back to homepage
 }
 
 if(isset($_POST["submit"]))
