@@ -78,7 +78,7 @@ if(isset($_POST["txtEmail"])) {
 <nav> <?php include '../Includes/nav.php'?></nav>
 <main>
     <form method="post" >
-        <h3 id="error"><?=$errmsg?></h3> // this displays if our user types in the wrong user or password
+        <h3 id="error"><?=$errmsg?></h3>
         <table border="1" width="80%">
             <tr height="60">
                 <th colspan="2"><h3>User Login</h3></th>

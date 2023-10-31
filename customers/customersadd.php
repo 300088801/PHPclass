@@ -1,10 +1,13 @@
 <?php
+session_start();
+$customerKey= sprintf('%04X%04X%04X%04X%04X%04X%04X%04X', mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(16384, 20479), mt_rand(32768, 49151), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535));
 //Database stuff
 //include '../Includes/dbConn.php';
 require_once('../Includes/dbConn.php');
 
     if(isset($_POST["txtFirstName"], $_POST["txtLastName"], $_POST["txtAddress"], $_POST["txtCity"], $_POST["txtState"], $_POST["txtZip"], $_POST["txtPhone"], $_POST["txtEmail"], $_POST["txtPassword"]))
     {
+
         $firstName= $_POST["txtFirstName"];
         $lastName= $_POST["txtLastName"];
         $address= $_POST["txtAddress"];
@@ -18,9 +21,10 @@ require_once('../Includes/dbConn.php');
 
 
         try{
+            require_once('../Includes/dbConn.php');
             $db = new PDO($dsn, $username, $password, $options);
 
-            $sql = $db->prepare("insert into customers (firstName,lastName,address,city,state,zip,phone,email,password) Value (:firstName,:lastName,:address,:city,:state,:zip,:phone,:email,:password)");
+            $sql = $db->prepare("insert into customers (firstName,lastName,address,city,state,zip,phone,email,password,memberKey) Value (:firstName,:lastName,:address,:city,:state,:zip,:phone,:email,:password,:Key)");
             $sql->bindValue(":firstName",$firstName);
             $sql->bindValue(":lastName",$lastName);
             $sql->bindValue(":address",$address);
@@ -29,15 +33,17 @@ require_once('../Includes/dbConn.php');
             $sql->bindValue(":zip",$zip);
             $sql->bindValue(":phone",$phone);
             $sql->bindValue(":email",$email);
-            $sql->bindValue(":password",$customerPassword);
+            $sql->bindValue(":password",md5($customerPassword . $customerKey));
+            $sql->bindValue(":Key",$customerKey);
             $sql->execute();
 
         }catch(PDOException $e){
             $error = $e->getMessage();
             echo "Error 1: $error";
         }
-
-        header("Location:customers.php");
+        echo $customerKey;
+        echo $customerPassword;
+        //header("Location:customers.php");
     }
 
 
