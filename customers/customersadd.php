@@ -24,7 +24,7 @@ require_once('../Includes/dbConn.php');
             require_once('../Includes/dbConn.php');
             $db = new PDO($dsn, $username, $password, $options);
 
-            $sql = $db->prepare("insert into customers (firstName,lastName,address,city,state,zip,phone,email,password,memberKey) Value (:firstName,:lastName,:address,:city,:state,:zip,:phone,:email,:password,:Key)");
+            $sql = $db->prepare("insert into customers (firstName,lastName,address,city,state,zip,phone,email,password,customerKey) Value (:firstName,:lastName,:address,:city,:state,:zip,:phone,:email,:password,:Key)");
             $sql->bindValue(":firstName",$firstName);
             $sql->bindValue(":lastName",$lastName);
             $sql->bindValue(":address",$address);
@@ -41,9 +41,7 @@ require_once('../Includes/dbConn.php');
             $error = $e->getMessage();
             echo "Error 1: $error";
         }
-        echo $customerKey;
-        echo $customerPassword;
-        //header("Location:customers.php");
+        header("Location:customers.php");
     }
 
 
