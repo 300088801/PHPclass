@@ -1,4 +1,6 @@
 <?php
+session_start();
+$customerKey= sprintf('%04X%04X%04X%04X%04X%04X%04X%04X', mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(16384, 20479), mt_rand(32768, 49151), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535));
 
 //Database stuff
 //include '../Includes/dbConn.php';
@@ -20,7 +22,7 @@ require_once('../Includes/dbConn.php');
         try{
             $db = new PDO($dsn, $username, $password, $options);
 
-            $sql = $db->prepare("update customers set firstName = :firstName, lastName = :lastName ,Address = :address, city = :city, state = :state, zip = :zip, phone = :phone, email= :email,password = :password where customerID= :ID");
+            $sql = $db->prepare("update customers set firstName = :firstName, lastName = :lastName ,Address = :address, city = :city, state = :state, zip = :zip, phone = :phone, email= :email,password = :password, customerKey = :Key where customerID= :ID");
             $sql->bindValue(":firstName",$firstName);
             $sql->bindValue(":lastName",$lastName);
             $sql->bindValue(":address",$address);
@@ -29,7 +31,8 @@ require_once('../Includes/dbConn.php');
             $sql->bindValue(":zip",$zip);
             $sql->bindValue(":phone",$phone);
             $sql->bindValue(":email",$email);
-            $sql->bindValue(":password",$customerPassword);
+            $sql->bindValue(":Key",$customerKey);
+            $sql->bindValue(":password",md5($customerPassword . $customerKey));
             $sql->bindValue(":ID",$id);
             $sql->execute();
 
