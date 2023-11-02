@@ -54,7 +54,7 @@ function get_races()
 }
 function get_runners($raceID)
 {
-    echo "The runners for " . $raceID . " are : ";
+    echo "The runners for race " . $raceID . " are : ";
 }
 function add_runner()
 {
