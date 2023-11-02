@@ -25,7 +25,7 @@ if(isset($_POST["txtEmail"])) {
                 $hashedPassword=md5($loginPassword . $row["memberKey"]);
                 if($hashedPassword == $row["memberPassword"])
                 {
-                    $_SESSION{"UID"}=1;
+                    $_SESSION{"UID"}=$row["memberID"];
                     $_SESSION{"Role"} = $row["RoleID"];
                     if($row["RoleID"]==1)
                     {
@@ -33,15 +33,8 @@ if(isset($_POST["txtEmail"])) {
                     }
                     else
                     {
+
                         header("Location:member.php");
-                        if($row[RoleID]==2)
-                        {
-                            //on the member.php page, show something for the role of operator
-                        }
-                        else
-                        {
-                            //on the member.php page, show something for the role of member
-                        }
                     }
                 }
                 else
@@ -85,7 +78,7 @@ if(isset($_POST["txtEmail"])) {
             </tr>
             <tr height="60">
                 <th>Email</th>
-                <td><input id="txtEmail" name="txtEmail" type="text" size="50"></td>  <!--inline php to insert our values from above into the rows when the user clicks to update-->
+                <td><input id="txtEmail" name="txtEmail" type="text" size="50"></td>
             </tr>
             <tr height="60">
                 <th>Password</th>
