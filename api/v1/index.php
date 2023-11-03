@@ -60,8 +60,8 @@ function add_runner()
 {
     $request = \Slim\Slim::getInstance()->request();
     $post_json = json_decode($request->getBody(), TRUE);
-    echo "Runner has been added. Runner info:";
-    echo $post_json["fname". "lname"."age". "runnerID"];
+    echo "Runner has been added. Runner info: " . $post_json["fname"] . " " . $post_json["lname"] . " " . $post_json["age"] . " " . $post_json["runnerID"];
+
 }
 function delete_runner()
 {
