@@ -15,7 +15,7 @@ if(isset($_POST["txtEmail"])) {
         try{
             $db = new PDO($dsn, $username, $password, $options); // trying to connect using PDO
 
-            $sql = $db->prepare("select memberID, memberPassword, memberKey,RoleID from memberLogin where memberEmail = :Email"); //asking for all of the fields in our database movielist
+            $sql = $db->prepare("select memberID, memberPassword, memberKey,RoleID from memberLogin where memberEmail = :Email");
             $sql->bindValue(":Email",$email ); // we enforce unique email policy in our memberLogin table
             $sql->execute(); //database gets records and retrieve it into our sql
             $row = $sql->fetch(); // grabs the first row
