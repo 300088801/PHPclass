@@ -121,12 +121,43 @@ function add_runner()
         echo json_encode($error);
     }
 }
+
+
 function delete_runner()
 {
     $request = \Slim\Slim::getInstance()->request();
     $post_json = json_decode($request->getBody(), TRUE);
-    echo $post_json["fname"] . " " . $post_json["lname"] . " has been deleted from the runners list";
+    $memberID= $post_json["memberID"];
+    $raceID= $post_json["raceID"];
+    //$RoleID = $post_json["RoleID"];
+    $memberKey= $post_json["memberKey"];
 
+    include '../../Includes/dbConn.php';
+
+
+    try {
+        $db = new PDO($dsn, $username, $password, $options); // trying to connect using PDO
+        $sql = $db->prepare("SELECT member_race.raceID from member_race INNER JOIN memberLogin ON member_race.memberID = memberLogin.memberID where member_race.raceID = 2 AND memberLogin.memberKey = :APIKey");
+        $sql->bindValue(":APIKey", $memberKey);
+        $sql->execute(); //database gets records and retrieve it into our sql
+        $results = $sql->fetch(); // grabs the first row
+        if($results==null)
+        {
+            echo "Bad API Key";
+        }
+        else{
+            $sql = $db->prepare("delete from member_race where memberID = :memberID and raceID = :raceID and RoleID=3 ");
+            $sql->bindValue(":memberID", $memberID);
+            $sql->bindValue(":raceID", $raceID);
+            $sql->execute();
+            echo "Good Key";
+        }
+        $results = null;
+        $db = null;
+    } catch (PDOException $e) {
+        $error = $e->getMessage();
+        echo json_encode($error);
+    }
 }
 
 ?>

@@ -7,5 +7,5 @@
     <li> <a href="/movielist/movielist.php">My Movie List</a> </li>
     <li> <a href="/customers/customers.php">Customer Home Page</a> </li>
     <li> <a href="/login/">Login</a></li>
-    <li><a href="/API.php?action=get_races">API</a></li>
+    <li><a href="/api/v1/get_races">API</a></li>
 </ul>
