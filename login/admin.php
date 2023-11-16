@@ -117,16 +117,6 @@ if(isset($_POST["submit"]))
                 <th>Retype Password</th>
                 <td><input id="txtPassword2" name="txtPassword2" type="password" size="50"></td>
             </tr>
-            <!--<tr height="60">
-                <th>Role</th>
-                <td>
-                    <select id="txtRole" name="txtRole">
-                        <option value="1">Admin</option>
-                        <option value="2">Operator</option>
-                        <option value="3">Members</option> // these are our values in the database
-                    </select>
-                </td>
-            </tr>-->
             <tr height="60">
                 <th>Role</th>
                 <td>
