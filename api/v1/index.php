@@ -112,7 +112,7 @@ function add_runner()
             $sql->bindValue(":memberID", $memberID);
             $sql->bindValue(":raceID", $raceID);
             $sql->execute();
-            echo "Good Key";
+            echo "Runner " . $memberID . " has been added to race " . $raceID;
         }
         $results = null;
         $db = null;
@@ -150,7 +150,7 @@ function delete_runner()
             $sql->bindValue(":memberID", $memberID);
             $sql->bindValue(":raceID", $raceID);
             $sql->execute();
-            echo "Good Key";
+            echo "Runner " . $memberID . " has been deleted from race " . $raceID;;
         }
         $results = null;
         $db = null;

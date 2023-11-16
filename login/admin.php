@@ -117,13 +117,38 @@ if(isset($_POST["submit"]))
                 <th>Retype Password</th>
                 <td><input id="txtPassword2" name="txtPassword2" type="password" size="50"></td>
             </tr>
-            <tr height="60">
+            <!--<tr height="60">
                 <th>Role</th>
                 <td>
                     <select id="txtRole" name="txtRole">
                         <option value="1">Admin</option>
                         <option value="2">Operator</option>
                         <option value="3">Members</option> // these are our values in the database
+                    </select>
+                </td>
+            </tr>-->
+            <tr height="60">
+                <th>Role</th>
+                <td>
+                    <select id="txtRole" name="txtRole">
+                        <?php
+                        include '../Includes/dbConn.php';
+                        try{
+                            $db = new PDO($dsn, $username, $password, $options);
+                            $sql = $db->prepare("SELECT roleID, roleValue FROM role");
+                            $sql->execute();
+                            $roles = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+                            foreach ($roles as $role) {
+                                echo '<option value="' . $role['roleID'] . '">' . $role['roleValue'] . '</option>';
+                            }
+
+                            $db = null;
+                        }catch(PDOException $e){
+                            $error = $e->getMessage();
+                            echo "Error: $error";
+                        }
+                        ?>
                     </select>
                 </td>
             </tr>
