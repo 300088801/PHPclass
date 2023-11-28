@@ -168,7 +168,7 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
+                <div class="col-lg-5  col-sm-6">
                     <?= validation_errors('<p class= "error">')?>
                     <?php
                     if(isset($error_message))
