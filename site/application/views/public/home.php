@@ -1,4 +1,4 @@
-<?=asset_url()?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,6 +28,15 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <?php
+        if(isset($load_error))
+        {
+            $load_error = null;
+            echo "<script>window.onload = function() {location.href = '#login'}</script>";
+        }
+    ?>
+
 
 </head>
 
@@ -161,6 +170,14 @@
             <div class="row">
                 <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
                     <?= validation_errors('<p class= "error">')?>
+                    <?php
+                    if(isset($error_message))
+                    {
+
+                        echo "<p class= 'error'>$error_message</p>";
+                        $error_message=null;
+                    }
+                    ?>
                 </div>
             </div>
             <div class="row">
@@ -169,7 +186,7 @@
                     <?php
                         echo form_open('home/login');
                         echo form_input('user_name','' ,'placeholder="User Name"'). "<br/>";
-                        echo form_input('password','' ,'placeholder="Password"')."<br/>";
+                        echo form_password('password','' ,'placeholder="Password"')."<br/>";
                         echo form_submit('submit', 'Login');
                         echo form_close();
                     ?>
