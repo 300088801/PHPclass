@@ -20,6 +20,18 @@ class Home extends CI_Controller {
 	 */
 	public function index()
 	{
+        $this->load->helper('form');
 		$this->load->view('public/home');
 	}
+
+    public function login()
+    {
+        echo "Test";
+    }
+
+    public function create()
+    {
+        echo "Test";
+    }
+
 }

@@ -56,6 +56,9 @@
                         <a href="#services">Services</a>
                     </li>
                     <li>
+                        <a href="#login">Login</a>
+                    </li>
+                    <li>
                         <a href="#contact">Contact</a>
                     </li>
                 </ul>
@@ -148,6 +151,47 @@
 
     </div>
     <!-- /.content-section-a -->
+
+
+    <a  name="login"></a>
+
+    <div class="content-section-b">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
+                    <?= validation_errors('<p class= "error">')?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
+                    <h1>Login</h1>
+                    <?php
+                        echo form_open('home/login');
+                        echo form_input('user_name','' ,'placeholder="User Name"'). "<br/>";
+                        echo form_input('password','' ,'placeholder="Password"')."<br/>";
+                        echo form_submit('submit', 'Login');
+                        echo form_close();
+                    ?>
+                </div>
+                <div class="col-lg-5 col-sm-pull-6  col-sm-6">
+                    <h1>Create Account</h1>
+                    <?php
+                    echo form_open('home/create');
+                    echo form_input('full_Name','' ,'placeholder="Full Name"'). "<br/>";
+                    echo form_input('email','' ,'placeholder="Email Address"'). "<br/>";
+                    echo form_input('password','' ,'placeholder="Password"')."<br/>";
+                    echo form_input('confirm_Password','' ,'placeholder="Confirm Password"'). "<br/>";
+                    echo form_submit('submit', 'Login');
+                    echo form_close();
+                    ?>
+                </div>
+            </div>
+
+        </div>
+
+
+
 
 	<a  name="contact"></a>
     <div class="banner">
