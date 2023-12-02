@@ -18,7 +18,7 @@
     <link href="<?=asset_url()?>css/sb-admin.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="../../../../../../Downloads/Admin/startbootstrap-sb-admin-gh-pages/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="<?=asset_url()?>font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -484,10 +484,10 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="<?=asset_url()?>js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="<?=asset_url()?>js/bootstrap.min.js"></script>
 
 </body>
 
