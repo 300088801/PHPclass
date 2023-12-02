@@ -202,8 +202,8 @@
                     echo form_open('home/create');
                     echo form_input('full_Name','' ,'placeholder="Full Name"'). "<br/>";
                     echo form_input('email','' ,'placeholder="Email Address"'). "<br/>";
-                    echo form_input('password','' ,'placeholder="Password"')."<br/>";
-                    echo form_input('confirm_Password','' ,'placeholder="Confirm Password"'). "<br/>";
+                    echo form_password('password','' ,'placeholder="Password"')."<br/>";
+                    echo form_password('confirm_Password','' ,'placeholder="Confirm Password"'). "<br/>";
                     echo form_submit('submit', 'Create Account');
                     echo form_close();
                     ?>

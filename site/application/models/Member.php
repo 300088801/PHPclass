@@ -49,7 +49,7 @@ class Member extends CI_Model {
         $key= sprintf('%04X%04X%04X%04X%04X%04X%04X%04X', mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(16384, 20479), mt_rand(32768, 49151), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535));
         try {
             $db = new PDO($this->db->dsn, $this->db->username, $this->db->password, $this->db->options); // trying to connect using PDO
-            $sql = $db->prepare("insert into memberLogin (memberName,memberEmail,memberPassword,RoleID,memberKey) Value (:Name,:Email,:Password,3,:Key)");
+            $sql = $db->prepare("insert into memberLogin (memberName,memberEmail,memberPassword,RoleID,memberKey) Value (:Name,:Email,:Password,2,:Key)");
 
             $sql->bindValue(":Name", $name);
             $sql->bindValue(":Email",$email);
