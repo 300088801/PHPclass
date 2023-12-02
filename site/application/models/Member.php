@@ -41,8 +41,25 @@ class Member extends CI_Model {
         }
     }
 
-    public function create_User()
+    public function create_User($name,$email,$newUserPassword)
     {
+        $this->load->database();
+        $this->load->library('session');
 
+        $key= sprintf('%04X%04X%04X%04X%04X%04X%04X%04X', mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(16384, 20479), mt_rand(32768, 49151), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535));
+        try {
+            $db = new PDO($this->db->dsn, $this->db->username, $this->db->password, $this->db->options); // trying to connect using PDO
+            $sql = $db->prepare("insert into memberLogin (memberName,memberEmail,memberPassword,RoleID,memberKey) Value (:Name,:Email,:Password,3,:Key)");
+
+            $sql->bindValue(":Name", $name);
+            $sql->bindValue(":Email",$email);
+            $sql->bindValue(":Password",md5($newUserPassword . $key)); //md5 mixes our password up in a hash, can be reverse engineered though
+            $sql->bindValue(":RID",3);
+            $sql->bindValue(":Key",$key);
+            $sql->execute();
+        }
+        catch(PDOException $e){
+                return false;
+            }
     }
 }

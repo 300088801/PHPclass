@@ -177,6 +177,11 @@
                         echo "<p class= 'error'>$error_message</p>";
                         $error_message=null;
                     }
+                    elseif (isset($confirmation_message))
+                    {
+                        echo "<p class= 'confirmation'>$confirmation_message</p>";
+                        $confirmation_message=null;
+                    }
                     ?>
                 </div>
             </div>
@@ -199,7 +204,7 @@
                     echo form_input('email','' ,'placeholder="Email Address"'). "<br/>";
                     echo form_input('password','' ,'placeholder="Password"')."<br/>";
                     echo form_input('confirm_Password','' ,'placeholder="Confirm Password"'). "<br/>";
-                    echo form_submit('submit', 'Login');
+                    echo form_submit('submit', 'Create Account');
                     echo form_close();
                     ?>
                 </div>

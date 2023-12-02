@@ -51,7 +51,6 @@ class Home extends CI_Controller {
                 $this->load->view('public/home', $data);
             }
 
-
         }
 
     }
@@ -60,7 +59,7 @@ class Home extends CI_Controller {
     {
         $this->load-> library('form_validation');
         $this->form_validation->set_rules('full_Name','Full Name','trim|required');
-        $this->form_validation->set_rules('user_name', 'User Name', 'trim|required|valid_email');
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
         $this->form_validation->set_rules('confirm_Password', 'Confirm Password', 'trim|required|matches[password]');
 
@@ -68,6 +67,24 @@ class Home extends CI_Controller {
         {
             $data = array('load_error'=>'true');
             $this->load->view('public/home', $data);
+        }
+        else
+        {
+            //Data Stuff
+            $this->load->model('Member');
+
+
+            if($this->Member->create_User($this->input->post('full_Name'),$this->input->post('email') ,$this->input->post('password')))
+            {
+                $data = array('load_error'=>'false','confirmation_message'=>'You have successfully created an account');
+                $this->load->view('public/home',$data);
+            }
+            else{
+
+                $data = array('load_error'=>'true', 'error_message'=>'Could not create a new account');
+                $this->load->view('public/home', $data);
+            }
+
         }
     }
 
