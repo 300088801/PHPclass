@@ -57,6 +57,7 @@ class Home extends CI_Controller {
 
     public function create()
     {
+        $this->load->database();
         $this->load-> library('form_validation');
         $this->form_validation->set_rules('full_Name','Full Name','trim|required');
         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');

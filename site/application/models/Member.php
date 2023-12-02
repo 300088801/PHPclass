@@ -54,9 +54,9 @@ class Member extends CI_Model {
             $sql->bindValue(":Name", $name);
             $sql->bindValue(":Email",$email);
             $sql->bindValue(":Password",md5($newUserPassword . $key)); //md5 mixes our password up in a hash, can be reverse engineered though
-            $sql->bindValue(":RID",3);
             $sql->bindValue(":Key",$key);
             $sql->execute();
+            return true;
         }
         catch(PDOException $e){
                 return false;
