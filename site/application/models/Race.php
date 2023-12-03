@@ -26,4 +26,16 @@ class Race extends CI_Model {
 
         }
     }
+
+    public function delete_race($id)
+    {
+        $this->load->database();
+
+        try{
+            $data=array('raceID'=>$id);
+            $this->db->delete('race',$data);
+        }catch(PDOException $e){
+
+        }
+    }
 }

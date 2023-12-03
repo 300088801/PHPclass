@@ -67,7 +67,7 @@
                                 $date = $race['raceDateTime'];
                                 $id= $race['raceID'];
 
-                                echo "<tr><td>$name</td><td>$location</td><td>$date</td><td>Edit | Delete</td></tr>";
+                                echo "<tr><td>$name</td><td>$location</td><td>$date</td><td>Edit | <a href='/site/admin/delete_race/" .$id. "'> Delete</a></td></tr>";
                             }
                             ?>
                             </tbody>
