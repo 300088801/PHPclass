@@ -32,7 +32,14 @@ class Admin extends CI_Controller {
     public function edit_race()
     {
         $this->load->model('Race');
-        $this->Race->update_race($this->input->post('txtName'),$this->input->post('txtLocation'),$this->input->post('txtDescription'),$this->input->post('txtDate'),$this->input->post('txtID'));
+
+        $this->Race->update_race(
+            $this->input->post('txtName'),
+            $this->input->post('txtLocation'),
+            $this->input->post('txtDescription'),
+            $this->input->post('txtDate'),
+            $this->input->post('txtID')
+        );
         redirect("admin/manage_marathons","refresh");
     }
 

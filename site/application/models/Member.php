@@ -59,6 +59,11 @@ class Member extends CI_Model {
             return true;
         }
         catch(PDOException $e){
+            //-- Looks like you may have figured this out
+
+            //- just a temp print out for testing quick
+                //echo $e->getMessage();exit;
+
                 return false;
             }
     }

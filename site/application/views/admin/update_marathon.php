@@ -75,7 +75,7 @@
                             </div>
                             <button type="submit" class="btn btn-default">Update Race</button>
                             <button type="reset" class="btn btn-default">Reset</button>
-                            <input type="hidden" name="txtID" value="<?=$race[0]["raceID"] ?>"
+                            <input type="hidden" name="txtID" value="<?=$race[0]["raceID"] ?>">
                         </form>
                     </div>
                 </div>

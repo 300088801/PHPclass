@@ -43,7 +43,7 @@ class Home extends CI_Controller {
 
             if($this->Member->user_login($this->input->post('user_name'),$this->input->post('password')))
             {
-                $this->load->view('admin/home');
+                $this->load->view('admin/dashboard');
             }
             else{
                 //Bad Password

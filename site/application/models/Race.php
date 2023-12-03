@@ -30,13 +30,18 @@ class Race extends CI_Model {
     public function update_race($name,$location,$description,$date,$id)
     {
         $this->load->database();
-
+        //-- It looks like the $id is not getting passed into the function parameters.
+//echo "$name|$location|$description|$date|$id";exit;
         try{
             $data=array('raceName'=>$name,'raceLocation'=>$location,'raceDescription'=>$description,'raceDateTime'=>$date);
             $this->db->where('raceID',$id);
             $this->db->update('race',$data);
-        }catch(PDOException $e){
 
+            return true;
+        }catch(PDOException $e){
+            echo $e->getMessage();exit;
+
+            return false;
         }
     }
 
