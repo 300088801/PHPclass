@@ -49,49 +49,32 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Add Marathons
+                            Add New Race
                         </h1>
-                        <ol class="breadcrumb">
-                            <li>
-                                <i class="fa fa-dashboard"></i>  <a href="home.php">Dashboard</a>
-                            </li>
-                            <li class="active">
-                                <i class="fa fa-edit"></i> Forms
-                            </li>
-                        </ol>
                     </div>
                 </div>
                 <!-- /.row -->
-
                 <div class="row">
-                    <div class="col-lg-8">
+                    <div class="col-lg-12">
 
-                        <form role="form">
+                        <form method="post" action="/site/admin/add_race" role="form">
 
                             <div class="form-group">
                                 <label>Race Name</label>
-                                <input class="form-control">
-                                <p class="help-block">Example: Joe's Cool 5k</p>
-                            </div>
+                                <input name="txtName" class="form-control"><br />
 
-                            <div class="form-group">
                                 <label>Race Location</label>
-                                <input class="form-control" placeholder="Enter text">
-                            </div>
-                            <div class="form-group">
-                                <label>Race Description</label>
-                                <textarea class="form-control" rows="3"></textarea>
-                            </div>
+                                <input name="txtLocation" class="form-control"><br />
 
-                            <div class="form-group">
+                                <label>Race Description</label>
+                                <textarea name="txtDescription" class="form-control"></textarea><br />
+
                                 <label>Race Date</label>
-                                <div class="date">
-                                    <label>
-                                        <input type="date" value="">
-                                    </label>
-                                </div>
-                            <button type="submit" class="btn btn-default">Submit Button</button>
-                            <button type="reset" class="btn btn-default">Reset Button</button>
+                                <input name="txtDate" class="form-control"><br />
+
+                            </div>
+                            <button type="submit" class="btn btn-default">Add Race</button>
+                            <button type="reset" class="btn btn-default">Reset</button>
 
                         </form>
                     </div>

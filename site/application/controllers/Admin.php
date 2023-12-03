@@ -23,6 +23,12 @@ class Admin extends CI_Controller {
         $data = array('dashboard'=>'true');
 		$this->load->view('admin/dashboard',$data);
 	}
+    public function add_race()
+    {
+        $this->load->model('Race');
+        $this->Race->add_race($this->input->post('txtName'),$this->input->post('txtLocation'),$this->input->post('txtDescription'),$this->input->post('txtDate'));
+        redirect("admin/manage_marathons","refresh");
+    }
     /*
      * t2- Registration form code
      * t5 - Add Marathon
@@ -30,7 +36,9 @@ class Admin extends CI_Controller {
      */
     public function manage_marathons()
     {
+        $this->load->model('Race');
         $data = array('manage_marathons'=>'true');
+        $data['races'] = $this->Race->get_races();
         $this->load->view('admin/manage_marathons',$data);
     }
     public function add_marathon()
